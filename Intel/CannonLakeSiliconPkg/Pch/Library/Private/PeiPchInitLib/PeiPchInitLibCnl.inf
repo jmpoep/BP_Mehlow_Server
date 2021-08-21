@@ -1,0 +1,161 @@
+## @file
+# Component description file for PCH Init Lib Pei Phase for CannonLake PCH
+#
+# @copyright
+#  INTEL CONFIDENTIAL
+#  Copyright 2015 - 2018 Intel Corporation.
+#
+#  The source code contained or described herein and all documents related to the
+#  source code ("Material") are owned by Intel Corporation or its suppliers or
+#  licensors. Title to the Material remains with Intel Corporation or its suppliers
+#  and licensors. The Material may contain trade secrets and proprietary and
+#  confidential information of Intel Corporation and its suppliers and licensors,
+#  and is protected by worldwide copyright and trade secret laws and treaty
+#  provisions. No part of the Material may be used, copied, reproduced, modified,
+#  published, uploaded, posted, transmitted, distributed, or disclosed in any way
+#  without Intel's prior express written permission.
+#
+#  No license under any patent, copyright, trade secret or other intellectual
+#  property right is granted to or conferred upon you by disclosure or delivery
+#  of the Materials, either expressly, by implication, inducement, estoppel or
+#  otherwise. Any license under such intellectual property rights must be
+#  express and approved by Intel in writing.
+#
+#  Unless otherwise agreed by Intel in writing, you may not remove or alter
+#  this notice or any other notice embedded in Materials by Intel or
+#  Intel's suppliers or licensors in any way.
+#
+#  This file contains an 'Intel Peripheral Driver' and is uniquely identified as
+#  "Intel Reference Module" and is licensed for Intel CPUs and chipsets under
+#  the terms of your license agreement with Intel or your vendor. This file may
+#  be modified by the user, subject to additional terms of the license agreement.
+#
+# @par Specification Reference:
+#
+##
+
+
+[Defines]
+INF_VERSION = 0x00010017
+BASE_NAME = PeiPchInitLibCnl
+FILE_GUID = DE768472-20A4-4B33-9A31-2626012B6D5E
+VERSION_STRING = 1.0
+MODULE_TYPE = PEIM
+LIBRARY_CLASS = PchInitLib
+
+
+[LibraryClasses]
+BaseLib
+IoLib
+HobLib
+DebugLib
+TimerLib
+PciSegmentLib
+BaseMemoryLib
+MemoryAllocationLib
+PeiServicesLib
+PeiServicesTablePointerLib
+GpioLib
+GpioPrivateLib
+PchGbeLib
+PchPcrLib
+PchResetLib
+PchPcieRpLib
+PchPolicyLib
+PchSerialIoLib
+PchSbiAccessLib
+PchSmmControlLib
+PchInitCommonLib
+PchSmbusCommonLib
+PchCycleDecodingLib
+PchPciExpressHelpersLib
+OcWdtLib
+PeiWdtLib
+ConfigBlockLib
+PeiMeLib
+PeiI2cMasterLib
+PchTraceHubLib
+S3BootScriptLib
+GraphicsInitLib
+PeiRstPrivateLib
+PeiSataPrivateLib
+CnviLib
+PchPsfPrivateLib
+PmcLib
+PmcPrivateLib
+PeiPmcPrivateLib
+SpiLib
+MtrrLib
+PchDmiLib
+DciPrivateLib
+PchFiaLib
+PeiPchHdaLib
+PeiGbeInitLib
+PeiHsioLib
+PeiPchIshLib
+PeiPchPcieLib
+PeiThermalLib
+PeiPchPcieClocksLib
+UsbLib
+PeiP2sbPrivateLib
+UsbInitLib
+PeiCnviPrivateLib
+CpuPlatformLib
+PeiRtcLib
+PeiPchDmiLib
+PeiItssLib
+PeiPchTraceHubLib
+SiScheduleResetLib
+PeiSmbusLib
+PeiScsLib
+PeiEspiInitLib
+PeiLpcLib
+PeiDciLib
+PeiIshInitLib
+PeiSerialIoInitLib
+PeiHdaInitLib
+PeiHybridStorageLib
+
+[Packages]
+MdePkg/MdePkg.dec
+ClientSiliconPkg/ClientSiliconPkg.dec
+CannonLakeSiliconPkg/SiPkg.dec
+UefiCpuPkg/UefiCpuPkg.dec
+
+[Sources]
+PchInitPreMem.c
+PchInit.c
+PchRootPorts.c
+PchUsb.c
+PchHsio.c
+PchHsioPreMem.c
+CnlPchLpHsioB0.c
+CnlPchLpHsioBx.c
+CnlPchLpHsioDx.c
+CnlPchHHsioAx.c
+CnlPchHHsioBx.c
+CnlPchHHsioA0.c
+PchPsth.c
+PchClk.c
+PchEndOfPei.c
+PchHobs.c
+PchSecurity.c
+
+
+[Ppis]
+gMeBeforeDidSentPpiGuid ## CONSUMES
+gSiPreMemPolicyPpiGuid
+
+[Guids]
+gPchDeviceTableHobGuid
+gChipsetInitHobGuid
+gPchConfigHobGuid
+gPchGlobalResetGuid
+gPchInfoHobGuid
+gSaMiscPeiPreMemConfigGuid
+
+[Pcd]
+gSiPkgTokenSpaceGuid.PcdAcpiBaseAddress            ## CONSUMES
+gSiPkgTokenSpaceGuid.PcdSiliconInitTempPciBusMin   ## CONSUMES
+gSiPkgTokenSpaceGuid.PcdSiliconInitTempPciBusMax   ## CONSUMES
+gSiPkgTokenSpaceGuid.PcdSiliconInitTempMemBaseAddr ## CONSUMES

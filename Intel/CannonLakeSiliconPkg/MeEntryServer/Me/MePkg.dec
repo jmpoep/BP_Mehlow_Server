@@ -1,0 +1,47 @@
+#
+# This file contains an 'Intel Peripheral Driver' and is      
+# licensed for Intel CPUs and chipsets under the terms of your
+# license agreement with Intel or your vendor.  This file may 
+# be modified by the user, subject to additional terms of the 
+# license agreement                                           
+#
+#/** @file
+# Platform Package
+#
+# This package provides platform specific modules.
+# Copyright (c) 2009 - 2018, Intel Corporation. All rights reserved.<BR>
+#
+#    This software and associated documentation (if any) is furnished
+#    under a license and may only be used or copied in accordance
+#    with the terms of the license. Except as permitted by such
+#    license, no part of this software or documentation may be
+#    reproduced, stored in a retrieval system, or transmitted in any
+#    form or by any means without the express written consent of
+#    Intel Corporation.
+#
+#**/
+
+[Defines]
+  DEC_SPECIFICATION              = 0x00010001
+  PACKAGE_NAME                   = MePkg
+  PACKAGE_GUID                   = D29FB889-2AD1-4862-9D0D-DAFD01CD68AC
+  PACKAGE_VERSION                = 0.1
+
+[Includes]              
+  Include
+
+[Guids]
+  gSpsInfoHobGuid             = {0x489d2a71, 0xba4a, 0x444c, {0x9f, 0xe2, 0xa6, 0xb7, 0xe5, 0xcd, 0x78, 0x47}}
+  gEfiSpsAcpiTableLocatorGuid = {0x4896840D, 0x46BB, 0x412B, {0xA3, 0x0A, 0xA6, 0x2A, 0xBF, 0xB3, 0x68, 0x2F}}
+  gMeTypeHobGuid              = {0xc0bc8ed5, 0x078c, 0x49c7, {0x9c, 0xf9, 0xf8, 0x73, 0xff, 0xe5, 0x50, 0x81}}
+
+[Protocols]
+  gSmmHeciProtocolGuid        = {0x826824b6, 0xcc9b, 0x4d62, {0x8e, 0x7a, 0x0f, 0xfb, 0xf6, 0x01, 0x3c, 0xbe}}  
+  gSpsSmmHmrfpoProtocolGuid   = {0x5EBEB554, 0xDF6F, 0x45B9, {0xAD, 0xCC, 0xD6, 0x81, 0x8C, 0xE3, 0xBE, 0x3B}}
+
+[Ppis]
+ gSpsHwChangePpiGuid          = {0x6b30ce48, 0xc7c7, 0x4aab, {0x89, 0x47, 0xd9, 0xcb, 0xbe, 0xac, 0x28, 0x38}}
+
+[PcdsFixedAtBuild]
+
+[PcdsFeatureFlag]

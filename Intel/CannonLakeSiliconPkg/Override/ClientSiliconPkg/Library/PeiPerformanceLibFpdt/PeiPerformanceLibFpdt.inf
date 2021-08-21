@@ -1,0 +1,64 @@
+### @file
+# Performance library instance used in PEI phase.
+#
+# This library provides the performance measurement interfaces in PEI
+# phase, it converts performance data to PEI GUID event, and created
+# GUIDed HOB for GUID event logging. The GUIDed HOB is passed to DXE
+# phase so that it can be taken over by DxeCorePerformanceLib.
+#
+# Copyright (C) 2012 - 2017, Intel Corporation. All rights reserved.<BR>
+# This software and associated documentation (if any) is furnished
+# under a license and may only be used or copied in accordance with
+# the terms of the license. Except as permitted by the license, no
+# part of this software or documentation may be reproduced, stored in
+# a retrieval system, or transmitted in any form or by any means
+# without the express written consent of Intel Corporation.
+# This file contains 'Framework Code' and is licensed as such under
+# the terms of your license agreement with Intel or your vendor. This
+# file may not be modified, except as allowed by additional terms of
+# your license agreement.
+#
+# @par Specification Reference:
+#
+# @par Glossary:
+###
+
+[Defines]
+  INF_VERSION                    = 0x00010017
+  BASE_NAME                      = PeiPerformanceLibFpdt
+  FILE_GUID                      = EB9433F6-91E4-45c6-B937-BAE819DA4106
+  VERSION_STRING                 = 1.0
+  MODULE_TYPE                    = PEIM
+  LIBRARY_CLASS                  = PerformanceLib|PEIM PEI_CORE SEC
+#
+# The following information is for reference only and not required by the build tools.
+#
+# VALID_ARCHITECTURES = IA32 X64 IPF EBC
+#
+
+[LibraryClasses]
+  BaseMemoryLib
+  PcdLib
+  TimerLib
+  BaseLib
+  HobLib
+  DebugLib
+  LocalApicLib
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  UefiCpuPkg/UefiCpuPkg.dec
+  ClientCommonPkg/ClientCommonPkg.dec
+
+[Pcd]
+  gEfiMdeModulePkgTokenSpaceGuid.PcdMaxPeiPerformanceLogEntries
+  gEfiMdeModulePkgTokenSpaceGuid.PcdMaxPeiPerformanceLogEntriesPerHob
+  gEfiMdePkgTokenSpaceGuid.PcdPerformanceLibraryPropertyMask
+
+[Sources]
+  PeiPerformanceLibFpdt.c
+
+[Guids]
+  gPeiFirmwarePerformanceGuid                   ## PRODUCES ## HOB
+
